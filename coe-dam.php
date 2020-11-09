@@ -56,7 +56,7 @@ function coe_register_region() {
 		'show_tagcloud'     => true,
 		'rewrite'           => $rewrite,
 		'show_in_rest'      => true,
-		'meta_box_cb'       => 'coe_select_meta_box'
+		'meta_box_cb'       => 'coe_select_meta_box',
 	);
 	register_taxonomy( 'region', array( 'asset' ), $args );
 
@@ -150,9 +150,9 @@ function coe_select_meta_box( $post, $box ) {
 	$selected     = wp_get_object_terms( $post->ID, $taxonomy, array( 'fields' => 'ids' ) );
 	$hierarchical = $tax->hierarchical;
 	?>
-	<div id="taxonomy-<?php echo $taxonomy; ?>" class="selectdiv">
-		<?php if( current_user_can( $tax->cap->edit_terms ) ) : ?>
-		<?php
+	<div id="taxonomy-<?php echo esc_attr( $taxonomy ); ?>" class="selectdiv">
+		<?php if ( current_user_can( $tax->cap->edit_terms ) ) : ?>
+			<?php
 			if ( $hierarchical ) {
 				wp_dropdown_categories(
 					array(
@@ -171,12 +171,12 @@ function coe_select_meta_box( $post, $box ) {
 				<select name="<?php echo esc_html( "tax_input[$taxonomy][]" ); ?> class="widefat">
 					<option value="0"></option>
 					<?php foreach ( get_terms( $taxonomy, array( 'hide_empty' => false ) )  as $term ) : ?>
-						<option value="<?php echo esc_attr( $term->slug ); ?>" <?php echo selected( $term->term_id, count( $selected ) >= 1 ? $selected[0] : ''); ?>><?php echo esc_html( $term->name ); ?></option>
+						<option value="<?php echo esc_attr( $term->slug ); ?>" <?php echo selected( $term->term_id, count( $selected ) >= 1 ? $selected[0] : '' ); ?>><?php echo esc_html( $term->name ); ?></option>
 					<?php endforeach; ?>
 				</select>
 				<?php
 			}
-		?>
+			?>
 		<?php endif; ?>
 	</div>
 	<?php
