@@ -1,14 +1,36 @@
 <?php
 /**
-Plugin Name: COE Data Asset Management System
-Plugin URI: https://github.com/galyonj/coe-dam/
-Description: Registers a custom post type and custom taxonomy for asset management on coefoodsafetytools.org
-Version: 0.1.3
-Author: John Galyon
-Author URI: https://github.com/galyonj
-Textdomain: coe-dams
-License: MIT
+ * @link              https://github.com/galyonj
+ * @since             1.0.0
+ * @package           COE_DAMS
+ * @wordpress-plugin
+ * Plugin Name:       COE Data Asset Management System
+ * Plugin URI:        https://github.com/galyonj/coe-dam/
+ * Description:       Registers a custom post type and custom taxonomy for asset management on coefoodsafetytools.org
+ * Version:           1.0.3
+ * Author:            John Galyon
+ * Author URI:        https://github.com/galyonj
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       coe-dams
+ * Domain Path:       /languages
 */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+/**
+ * Update the plugin version as necessary according to SemVer standards
+ * Given a version number MAJOR.MINOR.PATCH, increment the:
+ * MAJOR version when you make incompatible API changes,
+ * MINOR version when you add functionality in a backwards compatible manner, and
+ * PATCH version when you make backwards compatible bug fixes.
+ * Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
+ * More information at https://semver.org/
+ */
+define( 'COE_DAM_VERSION', '1.0.3' );
 
 /**
  * Add custom taxonomies
